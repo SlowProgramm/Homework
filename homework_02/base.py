@@ -15,23 +15,21 @@ class Vehicle(ABC):
     fuel = 0
     fuel_consumption = 0
 
-
-
     def __init__(self, weight, fuel, fuel_consumption):
         self.weight = weight
         self.fuel = fuel
-        self.fuel_consumption = fuel_consumption #Верно?
+        self.fuel_consumption = fuel_consumption
+        #if self.weight == weight and self.fuel_consumption == fuel_consumption and self.fuel == fuel:
+        #   print('They are the same')
 
     def start(self):
         if self.started == False:   #Если
             if self.fuel > 0:
                 self.started = True
-                print('all is good1')
             elif self.fuel <= 0:
                 raise LowFuelError()
         else:
             pass
-            print('all is good2')
 
     def move(self, way):
         if self.fuel <= 0:
@@ -44,5 +42,4 @@ class Vehicle(ABC):
             else:
                 Exception('NotEnoughFuel')
 
-#C = Vehicle(1230302013, 342,  400)
-#C.start()
+C = Vehicle(1230302013, 342,  400)
