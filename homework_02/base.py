@@ -26,10 +26,15 @@ class Vehicle(ABC):
         if self.started == False:   #Если
             if self.fuel > 0:
                 self.started = True
-            elif self.fuel <= 0:
+            else:
                 raise LowFuelError()
-        else:
-            pass
+        elif self.started == True:
+            if self.fuel <= 0:
+                raise LowFuelError()
+            elif self.fuel > 0:
+                self.started = True
+
+
 
     def move(self, way):
         if self.fuel <= 0:
@@ -42,4 +47,9 @@ class Vehicle(ABC):
             else:
                 Exception('NotEnoughFuel')
 
-C = Vehicle(1230302013, 342,  400)
+C = Vehicle(100, 1000,  10)
+C.start()
+C.fuel = 0
+print(C.started)
+print(C.fuel)
+C.start()
