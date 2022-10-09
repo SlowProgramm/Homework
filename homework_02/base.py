@@ -1,5 +1,6 @@
 from abc import ABC
 from exceptions import LowFuelError, NotEnoughFuel, CargoOverload
+
 from dataclasses import dataclass
 '''
 pytest testing/test_homework_02 -s -vv
@@ -47,9 +48,12 @@ class Vehicle(ABC):
             else:
                 Exception('NotEnoughFuel')
 
-C = Vehicle(100, 1000,  10)
-C.start()
-C.fuel = 0
-print(C.started)
-print(C.fuel)
-C.start()
+#C = Vehicle(100, 200,  10)
+# with pytest.raises(LowFuelError) as exc_info:
+#C.start()
+#C.fuel = 0
+#C.start()
+
+
+
+
