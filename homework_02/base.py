@@ -30,25 +30,25 @@ class Vehicle(ABC):
             if self.fuel > 0:
                 self.started = True
             else:
-                raise exceptions.LowFuelError()
+                raise LowFuelError()
         elif self.started == True:
             if self.fuel <= 0:
-                raise exceptions.LowFuelError()
+                raise LowFuelError()
             elif self.fuel > 0:
                 self.started = True
 
     def move(self, way):
         if self.fuel <= 0:
-            raise exceptions.NotEnoughFuel()
+            raise NotEnoughFuel()
         elif self.fuel > 0:
             if self.fuel < self.fuel_consumption:
-                raise exceptions.NotEnoughFuel()
+                raise NotEnoughFuel()
             elif self.fuel >= self.fuel_consumption:
                 max_distance = self.fuel / self.fuel_consumption
                 if max_distance >= way:
                     self.fuel = self.fuel - way * self.fuel_consumption
                 elif max_distance < 0:
-                    raise exceptions.NotEnoughFuel()
+                    raise NotEnoughFuel()
 
 
 C = Vehicle(100, 0,  10)
