@@ -44,10 +44,11 @@ class Vehicle(ABC):
             if self.fuel < self.fuel_consumption:
                 raise NotEnoughFuel()
             elif self.fuel >= self.fuel_consumption:
+                #print('Первый If')
                 max_distance = self.fuel / self.fuel_consumption
                 if max_distance >= way:
                     self.fuel = self.fuel - way * self.fuel_consumption
-                elif max_distance < 0:
+                elif max_distance < way:
                     raise NotEnoughFuel()
 
 

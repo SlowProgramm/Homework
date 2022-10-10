@@ -18,13 +18,3 @@ class Car(Vehicle):
 
 
 
-
-C = Car(123,12313,10)
-print('engine1 = ',C.engine)
-C.set_engine('Toyota')
-print('fuel = ',C.fuel)
-print('weight = ',C.weight)
-print('fuel_consumption = ',C.fuel_consumption)
-print('engine2 = ',C.engine)
-
-print(isinstance(C,Vehicle))
