@@ -1,5 +1,5 @@
 from abc import ABC
-from exceptions import LowFuelError, NotEnoughFuel, CargoOverload
+from homework_02.exceptions import LowFuelError, NotEnoughFuel, CargoOverload
 
 from dataclasses import dataclass
 
@@ -30,35 +30,31 @@ class Vehicle(ABC):
             if self.fuel > 0:
                 self.started = True
             else:
-                # print('LowFuel')
-                # with pytest.raises(LowFuelError) as exc_info:
-                raise LowFuelError()
+                raise exceptions.LowFuelError()
         elif self.started == True:
             if self.fuel <= 0:
-                # print('LowFuel')
-                # with pytest.raises(LowFuelError) as exc_info:
-                raise LowFuelError()
+                raise exceptions.LowFuelError()
             elif self.fuel > 0:
                 self.started = True
 
     def move(self, way):
         if self.fuel <= 0:
-            raise NotEnoughFuel()
+            raise exceptions.NotEnoughFuel()
         elif self.fuel > 0:
             if self.fuel < self.fuel_consumption:
-                raise NotEnoughFuel()
+                raise exceptions.NotEnoughFuel()
             elif self.fuel >= self.fuel_consumption:
                 max_distance = self.fuel / self.fuel_consumption
                 if max_distance >= way:
                     self.fuel = self.fuel - way * self.fuel_consumption
                 elif max_distance < 0:
-                    raise NotEnoughFuel()
+                    raise exceptions.NotEnoughFuel()
 
-'''
-C = Vehicle(100, 200,  10)
+
+C = Vehicle(100, 0,  10)
 # with pytest.raises(LowFuelError) as exc_info:
-C.start()
-
+#C.start()
+'''
 print('C.fuel = ' + str(C.fuel))
 print('C.fuel_consumption = ' + str(C.fuel_consumption))
 C.move(1000)
