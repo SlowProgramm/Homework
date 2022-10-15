@@ -1,6 +1,6 @@
 from homework_02.exceptions import CargoOverload
 from homework_02.base import Vehicle
-
+'''
 class Plane(Vehicle):
     cargo = 0
     max_cargo = 0
@@ -20,4 +20,4 @@ class Plane(Vehicle):
     def remove_all_cargo(self):
         oldCargo, self.cargo = self.cargo, 0
         return oldCargo
-
+'''

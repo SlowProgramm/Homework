@@ -2,6 +2,8 @@ from abc import ABC
 from homework_02.exceptions import LowFuelError, NotEnoughFuel, CargoOverload
 from dataclasses import dataclass
 
+'''
+
 class Vehicle(ABC):
     weight = 0
     started = False
@@ -12,8 +14,6 @@ class Vehicle(ABC):
         self.weight = weight
         self.fuel = fuel
         self.fuel_consumption = fuel_consumption
-        # if self.weight == weight and self.fuel_consumption == fuel_consumption and self.fuel == fuel:
-        #   print('They are the same')
 
     def start(self):
         if self.started == False:  # Если
@@ -39,4 +39,4 @@ class Vehicle(ABC):
                     self.fuel = self.fuel - way * self.fuel_consumption
                 elif max_distance < way:
                     raise NotEnoughFuel()
-
+'''
