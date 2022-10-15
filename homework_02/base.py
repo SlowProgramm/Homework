@@ -1,16 +1,6 @@
 from abc import ABC
 from homework_02.exceptions import LowFuelError, NotEnoughFuel, CargoOverload
-
 from dataclasses import dataclass
-
-'''
-pytest testing/test_homework_02 -s -vv
-git remote add origin git@github.com:SlowProgramm/PythonBasic-Homework.git
-git remote add origin https://github.com/SlowProgramm/PythonBasic-Homework.git
-git branch -M master
-git push -u origin master
-'''
-
 
 class Vehicle(ABC):
     weight = 0
@@ -44,20 +34,9 @@ class Vehicle(ABC):
             if self.fuel < self.fuel_consumption:
                 raise NotEnoughFuel()
             elif self.fuel >= self.fuel_consumption:
-                #print('Первый If')
                 max_distance = self.fuel / self.fuel_consumption
                 if max_distance >= way:
                     self.fuel = self.fuel - way * self.fuel_consumption
                 elif max_distance < way:
                     raise NotEnoughFuel()
 
-
-C = Vehicle(100, 0,  10)
-# with pytest.raises(LowFuelError) as exc_info:
-#C.start()
-'''
-print('C.fuel = ' + str(C.fuel))
-print('C.fuel_consumption = ' + str(C.fuel_consumption))
-C.move(1000)
-# C.start()
-'''
