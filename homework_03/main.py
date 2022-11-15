@@ -11,4 +11,4 @@ app.include_router(view_router)
 
 @app.get("/")
 def read_root():
-    return {"Hello": "World"}
+    return {"Hello": "Otus!"}
