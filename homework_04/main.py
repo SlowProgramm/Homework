@@ -13,7 +13,7 @@
 - закрытие соединения с БД
 """
 
-# Хотел задать вопрос. Что означает ошибка "Event loop is closed", которую игнорирует PyCharm?
+# Хотел задать вопрос. Что означает ошибка "Event loop is closed", которую игнорирует PyCharm? И почему данная ошибка не всплывала в уроках?
 
 import asyncio
 from models import engine, Base, Session, User, Post
@@ -28,8 +28,8 @@ async def create_tables():
 
 async def add_all(session, users_data, posts_data):
     for el in users_data:
-        json_id = el.get('id')
-        name = el.get('name')
+        json_id = el.get('id')  # Правильным решением было создавать отдельный атрибут? Без него я бы не смог привязать post к user.
+        name = el.get('name')   # id я не смог использовать, так как он появляется только при добавлении в таблицу
         username = el.get('username')
         email = el.get('email')
         new_user = User(json_id=json_id, name=name, username=username, email=email)
