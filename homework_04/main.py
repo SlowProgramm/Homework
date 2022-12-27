@@ -28,19 +28,21 @@ async def create_tables():
 
 async def add_all(session, users_data, posts_data):
     for el in users_data:
-        json_id = el.get('id')  # Правильным решением было создавать отдельный атрибут? Без него я бы не смог привязать post к user.
-        name = el.get('name')   # id я не смог использовать, так как он появляется только при добавлении в таблицу
-        username = el.get('username')
-        email = el.get('email')
+        json_id = el['id']
+        name = el['name']
+        username = el['username']
+        email = el['email']
         new_user = User(json_id=json_id, name=name, username=username, email=email)
         session.add(new_user)
-        for el2 in posts_data:
-            if new_user.json_id == el2.get('userId'):
-                title = el2.get('title')
-                body = el2.get('body')
-                new_post = Post(body=body, title=title, user=new_user)
-                session.add(new_post)
-    await session.commit()
+        await session.commit()
+
+    for el2 in posts_data:
+        title = el2['title']
+        body = el2['body']
+        user_id = el2['userId']
+        new_post = Post(body=body, title=title, user_id=user_id)
+        session.add(new_post)
+        await session.commit()
 
 
 async def async_main():

@@ -26,7 +26,7 @@ from sqlalchemy.ext.asyncio import (
 )
 import os
 
-DB_ECHO = False
+DB_ECHO = True
 PG_CONN_URI = os.environ.get("SQLALCHEMY_PG_CONN_URI") or "postgresql+asyncpg://postgres:Doctor8897@localhost:5432/postgres"
 engine: AsyncEngine = create_async_engine(url=PG_CONN_URI, echo=DB_ECHO)
 Base = declarative_base(bind=engine)
@@ -40,7 +40,7 @@ class User(Base):
     name = Column(String(100), unique=True, nullable=False)
     username = Column(String(100), unique=False, nullable=False)
     email = Column(String, unique=False, nullable=False)
-    posts = relationship("Post", back_populates="user", uselist=False)
+    posts = relationship("Post", back_populates="user", uselist=True)
 
     def __str__(self):
         return f"User(id={self.id}, username={self.username!r})"
