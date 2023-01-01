@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>{% block page_title %}
+        {% endblock %}</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css') }}">
+</head>
+<style>
+  body {
+    background-color: rgb(235,235,235);
+}
+
+</style>
+<body>
+<div style="background-color: rgb(200,200,200);">
+    <nav class="navbar navbar-expand-sm bg-light mb-2">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Menu</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    {% for endpoint, label in [
+                    ('home_page', 'Home'),
+                    ('about_page', 'About'),
+                    ] %}
+                    {% set path = url_for(endpoint) %}
+                    <li class="nav-item">
+                        <a class="nav-link {{ 'active' if path == request.path else '' }}"
+                           href="{{ path }}">
+                            {{ label }}
+                        </a>
+                    </li>
+                    {% endfor %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link {{ 'active' if path == request.path else '' }} dropdown-toggle" href="#"
+                           role="button" data-bs-toggle="dropdown"
+                           aria-expanded="false">
+                            Bootstrap's things
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/buttons">Buttons</a></li>
+                            <li><a class="dropdown-item" href="/forms">Forms</a></li>
+
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<div>
+    <h1 class="ms-3">
+        {% block title %}
+        Title
+        {% endblock %}
+    </h1>
+</div>
+
+<div class="ms-5">
+    {% block body %}
+    Body
+    {% endblock %}
+</div>
+
+
+<footer class="ms-5 mt-5" style="background-color: rgb(230,230,230); font-size: 12px;">
+    <p> &copy SlowProgramm 2023 </p>
+    <script src="{{url_for('static', filename='js/bootstrap.bundle.min.js') }}">
+    </script>
+</footer>
+</body>
+</html>
