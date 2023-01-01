@@ -11,7 +11,6 @@
 в навигационную панель добавьте ссылки на главную страницу / и на страницу /about/ при помощи url_for+
 """
 
-# pytest testing/test_homework_05 -s -vv
 
 from flask import Flask
 from flask import render_template
