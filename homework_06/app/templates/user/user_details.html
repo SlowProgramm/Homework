@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block page_title %}
+)
+{% endblock %}
+
+{% block title %}
+User
+{% endblock %}
+
+{% block body %}
+<h1>User {{ user.name }} </h1>
+{% for text, variable in [
+('Name', user.name),
+('Id', user.id),
+('Age', user.age),
+('Address', user.address)
+] %}
+<ul class="list-group list-group-horizontal">
+    <li class="list-group-item" style="width:85px">{{text}}</li>
+    <li class="list-group-item" style="width:190px">{{variable}}</li>
+</ul>
+{% endfor %}
+
+
+<!-- Button trigger modal -->
+<form method="post">
+            <button class="btn btn-outline-danger my-2"
+                    type="submit" name="csrf_token" value="{{ csrf_token() }}" >
+                Delete
+            </button>
+
+        <a type="button"  class="btn btn-outline-secondary"   href="/users/list/" >Back</a>
+
+</form>
+
+{% endblock %}

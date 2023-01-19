@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+Users:
+{% endblock %}
+
+{% block head %}
+
+  {% endblock %}
+
+{% block body %}
+<div class="h1 mb-2">Users:</div>
+{% if list %}
+
+    <ul class="list-group " style="width: 290px">
+        {% for dict_item in list %}
+        <li class="list-group-item"> <a style="text-decoration: none;" href="/users/{{dict_item.id}}" >  {{ dict_item.name }} </a> </li>
+        {% endfor %}
+    </ul>
+{% else %}
+<h2> No users yet</h2>
+    {% endif %}
+<br>
+<a type="button" href="/users/add/", class="btn btn-outline-success">Add User</a>
+
+
+
+
+
+{% endblock %}
+
+
+
