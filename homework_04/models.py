@@ -26,7 +26,7 @@ from sqlalchemy.ext.asyncio import (
 )
 import os
 
-DB_ECHO = True
+DB_ECHO = False
 PG_CONN_URI = os.environ.get("SQLALCHEMY_PG_CONN_URI") or "postgresql+asyncpg://postgres:Doctor8897@localhost:5432/postgres"
 engine: AsyncEngine = create_async_engine(url=PG_CONN_URI, echo=DB_ECHO)
 Base = declarative_base(bind=engine)
