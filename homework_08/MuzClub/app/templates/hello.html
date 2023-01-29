@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Hello</h1>
+    <ul>
+        {% for food in foods %}
+        <li>
+            <div>
+                <h2>{{food.name}}</h2>
+                <ul>
+                    {% for animal in food.animals.all %}
+                    <li>
+                        <div>
+                            <h3>{{animal.category}} <code>{{animal.name}}</code></h3>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </li>
+    {% endfor %}
+    </ul>
+{% endblock %}
