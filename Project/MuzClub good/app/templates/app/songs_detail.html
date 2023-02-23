@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<p>Title: {{object.name}}</p>
+<p>Author: {{object.author.username}}</p>
+<p>Category: {{object.category.title}}</p>
+<p>Rating: {{object.rating | default:"Нет оценок" }} </p>
+<p>Image: </p>
+<!--<h1>{{ object.image }}</h1>-->
+{% if object.image %}
+ <img src="{{ object.image.url}}" >
+{% else %}
+<img src="/media/images/none.png" >
+{% endif %}
+
+<>
+<p>File URL: {{object.file.url}}</p>
+
+<a href="{% url 'songs' %}">Назад</a>
+{% endblock %}

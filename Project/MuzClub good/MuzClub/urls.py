@@ -1,0 +1,47 @@
+"""MuzClub URL Configuration
+
+The `urlpatterns` list routes URLs to views. For more information please see:
+    https://docs.djangoproject.com/en/4.1/topics/http/urls/
+Examples:
+Function views
+    1. Add an import:  from my_app import views
+    2. Add a URL to urlpatterns:  path('', views.home, name='home')
+Class-based views
+    1. Add an import:  from other_app.views import Home
+    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
+Including another URLconf
+    1. Import the include() function: from django.urls import include, path
+    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+"""
+from django.contrib import admin
+from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
+from app import views
+from users.views import RegistrationView, UserLoginView, UserLogoutView, UserProfile
+
+
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', views.main_page, name='home'),
+    path('songs/', views.Song_List, name='songs'),
+    path('songs/<int:pk>', views.SongDetailView.as_view(), name='song'),
+    path('songs/delete/<int:pk>', views.SongDelete, name='song_delete'),
+    path('songs/latest/', views.LatestSongs, name='latest'),
+    path('songs/categories', views.GenresListView.as_view(), name='genres'),
+    path('songs/categories/create', views.GenreCreateView.as_view(), name='genres_create'),
+
+    path('users/create', RegistrationView.as_view(), name='user_registration'),
+    path('users/login', UserLoginView.as_view(), name='user_login'),
+    path('users/logout', UserLogoutView.as_view(), name='user_logout'),
+
+    path('users/profile/', UserProfile.as_view(), name='user_profile'),
+
+    path('songs/create2/', views.SongCreate, name='song_create_2'),
+    # path('songs/download/<str:filename>', views.download_file, name='download_file'),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+if settings.DEBUG:
+        urlpatterns += static(settings.MEDIA_URL,
+                              document_root=settings.MEDIA_ROOT)

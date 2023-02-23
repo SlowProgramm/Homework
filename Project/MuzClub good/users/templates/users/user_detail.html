@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block style %}
+
+
+li:hover .layer {
+  visibility: visible;
+}
+
+.list {
+ text-decoration: none;
+<!--background: red;-->
+}
+
+
+
+
+{% endblock %}
+{% block content %}
+<h4>
+<h2>Личный кабинет</h2>
+    <h4>Имя:  {{ object.username }}</h4>
+    <h4>Email:  {{ object.email }}</h4>
+    <h4>User ID:  {{ object.id }}</h4>
+
+
+   <h4> ФОТКУ ДОБАВЬ</h4>
+    <ul>
+    {% for el in user_songs %}
+    <li> <h1 class="list"> {{el.name}} [{{el.category.title}}] </h1></li>
+    {% endfor %}
+        </ul>
+{% endblock %}
