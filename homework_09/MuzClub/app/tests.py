@@ -8,7 +8,7 @@ class TestCategory(TestCase):
         self.category = Category.objects.create(title='Грустная')
 
     def tearDown(self) -> None:
-        pass
+        self.category.delete()
 
     def test_init(self):
         self.assertTrue(isinstance(self.category.title, str))
@@ -22,6 +22,9 @@ class TestCategory(TestCase):
 class TestAuthor(TestCase):
     def setUp(self) -> None:
         self.author = Author.objects.create(username='Артур Пирожков')
+
+    def tearDown(self) -> None:
+        self.author.delete()
 
     def test_init(self):
         self.assertTrue(isinstance(self.author.username, str))
@@ -38,6 +41,11 @@ class TestSong(TestCase):
         self.author = Author.objects.create(username='Артур Пирожков')
         self.rating = random_rating()
         self.song = Songs.objects.create(name='Рассвет', category=self.category, author=self.author, rating=self.rating)
+
+    def tearDown(self) -> None:
+        self.song.delete()
+        self.category.delete()
+        self.author.delete()
 
     def test_init(self):
         self.assertTrue(isinstance(self.author.username, str))
