@@ -1,6 +1,6 @@
 from django.test import TestCase
 from .views import random_rating
-from .models import Category, Author, Songs
+from .models import Category, Author, Song
 
 
 class TestCategory(TestCase):
@@ -40,7 +40,7 @@ class TestSong(TestCase):
         self.category = Category.objects.create(title='Энергичная')
         self.author = Author.objects.create(username='Артур Пирожков')
         self.rating = random_rating()
-        self.song = Songs.objects.create(name='Рассвет', category=self.category, author=self.author, rating=self.rating)
+        self.song = Song.objects.create(name='Рассвет', category=self.category, author=self.author, rating=self.rating)
 
     def tearDown(self) -> None:
         self.song.delete()

@@ -1,6 +1,6 @@
 from django.contrib import admin
-from app.models import Category, Author, Songs
+from app.models import Category, Author, Song
 
 admin.site.register(Category)
 admin.site.register(Author)
-admin.site.register(Songs)
+admin.site.register(Song)

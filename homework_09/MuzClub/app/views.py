@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
-from app.models import Category, Songs, Author
+from app.models import Category, Song, Author
 from random import random
 
 
@@ -13,7 +13,7 @@ def main_page(request):
 
 
 class SongListView(ListView):
-    model = Songs
+    model = Song
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
@@ -22,4 +22,4 @@ class SongListView(ListView):
 
 
 class SongDetailView(DetailView):
-    model = Songs
+    model = Song

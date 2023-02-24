@@ -1,5 +1,5 @@
 from django.test import TestCase
-from .models import Category, Author, Songs
+from .models import Category, Author, Song
 
 
 class TestAnimalListView(TestCase):
@@ -22,7 +22,7 @@ class TestAnimalListView(TestCase):
 
         category = Category.objects.create(title='Энергичная')
         author = Author.objects.create(username='Рамштаин')
-        song = Songs.objects.create(name='Pop-Star', category=category, author=author)
+        song = Song.objects.create(name='Pop-Star', category=category, author=author)
 
         response = self.client.get(f'/songs/{song.pk}/')
         self.assertEqual(response.status_code, 200)

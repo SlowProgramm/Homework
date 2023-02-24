@@ -16,7 +16,7 @@ class Author(models.Model):
         return f'{self.username}'
 
 
-class Songs(models.Model):
+class Song(models.Model):
     name = models.CharField(verbose_name='name', max_length=64, null=False, blank=False)
     category = models.ForeignKey(Category, on_delete=models.PROTECT, null=False, blank=False)
     rating = models.CharField(verbose_name='rating',  null=True, blank=True, max_length=2)
