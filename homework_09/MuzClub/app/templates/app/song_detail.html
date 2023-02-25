@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+<p>Title: {{object.name}}</p>
+<p>Author: {{object.author.username}}</p>
+<p>Category: {{object.category.title}}</p>
+<p>Rating: {{object.rating}} (Пока что рандомное значение)</p>
+<a href="{% url 'songs' %}">Назад</a>
+{% endblock %}
