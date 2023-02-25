@@ -28,5 +28,5 @@ jobs:
         pip install -r requirements.txt
     - name: Run Tests
       run: |
-        cd MuzClub
+        cd homework_10/MuzClub
         python manage.py test
