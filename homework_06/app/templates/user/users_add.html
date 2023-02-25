@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block page_title %}
+)
+{% endblock %}
+
+{% block title %}
+    Add user
+{% endblock %}
+
+{% block body %}
+    <div class="w-25">
+        <div class="h3">Create a new user</div>
+
+        <form method="post">
+            {{ form.hidden_tag() }}
+            {{ form.name.label(class="form-label") }}
+            {{ form.name(size=20, class="form-control") }}
+
+            {{ form.address.label(class="form-label") }}
+            {{ form.address(size=20, class="form-control") }}
+
+            {{ form.age.label(class="form-label") }}
+            {{ form.age(size=20, class="form-control") }}
+
+            {% if form.name.errors %}
+                <ul class="errors">
+                    {% for error in form.name.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            {% if form.address.errors %}
+                <ul class="errors">
+                    {% for error in form.address.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            <button class="btn btn-outline-primary my-2"
+                    type="submit">
+                Create
+            </button>
+            <a type="button"  class="btn btn-outline-secondary"   href="/users/list/" >Back</a>
+        </form>
+    </div>
+
+{% endblock %}
